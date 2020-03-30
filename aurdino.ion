@@ -1,0 +1,29 @@
+#include <Servo.h>
+// Declare the Servo pin
+
+// Create a servo object
+Servo Servo1,Servo2;
+int angle1 = 90,angle2 =90;
+void setup() {
+   // We need to attach the servo to the used pin number
+   Servo1.attach(5);  //up down
+   Servo1.attach(6);  //right left
+   Serial.begin(9600);
+}
+void loop() {
+  Servo1.write(angle1);
+  Servo2.write(angle2);
+  if (Serial.available() > 0)
+  {
+    String data = Serial.readStringUntil('\n');
+    if(data == "u")
+    {
+      angle1 = angle1 + 10;
+    }
+    else if (data == "d")
+    {
+      angle1 = angle1 - 10;
+    }
+    servo1.write(angle1)
+  }
+}
